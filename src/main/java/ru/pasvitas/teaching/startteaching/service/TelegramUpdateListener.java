@@ -22,7 +22,7 @@ public class TelegramUpdateListener implements UpdatesListener {
 	public int process(List<Update> list) {
 		for (Update update : list) {
 			if (update.message().text().equals("/students")) {
-				telegramBot.execute(new SendMessage(update.message().chat().id(), studentsService.getAllStudents(null, null).getFirst().getFirstName()));
+				//telegramBot.execute(new SendMessage(update.message().chat().id(), studentsService.getAllStudents(null, null).getFirst().getFirstName()));
 			}
 		}
 		return UpdatesListener.CONFIRMED_UPDATES_ALL;
@@ -30,6 +30,6 @@ public class TelegramUpdateListener implements UpdatesListener {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void onReady() {
-		telegramBot.setUpdatesListener(this);
+		//telegramBot.setUpdatesListener(this);
 	}
 }

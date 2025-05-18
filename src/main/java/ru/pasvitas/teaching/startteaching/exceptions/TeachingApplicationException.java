@@ -1,15 +1,14 @@
 package ru.pasvitas.teaching.startteaching.exceptions;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.Accessors;
 
-@Data
-@Accessors(chain = true)
 @RequiredArgsConstructor
-public class ExceptionResponse {
+@Getter
+public class TeachingApplicationException extends RuntimeException {
 
 	private final String code;
 	private final String message;
-
+	private final String method;
+	private final Exception originalException;
 }

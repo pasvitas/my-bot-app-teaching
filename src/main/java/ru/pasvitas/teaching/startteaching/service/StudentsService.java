@@ -9,8 +9,12 @@ public interface StudentsService {
 
 	public List<Student> getAllStudents(
 			String firstName,
-			String secondName
+			String secondName,
+			int page,
+			int size
 	);
+
+	List<Student> getStudentByGroup(String groupName);
 
 	public Student getStudentById(Long id);
 

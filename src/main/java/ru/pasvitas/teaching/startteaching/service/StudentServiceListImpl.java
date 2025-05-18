@@ -19,8 +19,13 @@ public class StudentServiceListImpl implements StudentsService {
 	}
 
 	@Override
-	public List<Student> getAllStudents(String firstName, String secondName) {
+	public List<Student> getAllStudents(String firstName, String secondName, int page, int size) {
 		return students;
+	}
+
+	@Override
+	public List<Student> getStudentByGroup(String groupName) {
+		return List.of();
 	}
 
 	@Override

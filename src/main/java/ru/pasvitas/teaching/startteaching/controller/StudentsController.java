@@ -3,8 +3,10 @@ package ru.pasvitas.teaching.startteaching.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,9 +82,15 @@ public class StudentsController {
 	@GetMapping
 	public ResponseEntity<List<Student>> getAllStudents(
 			@RequestParam(value = "firstName", required = false) String firstName,
-			@RequestParam(value = "secondName", required = false) String secondName
+			@RequestParam(value = "secondName", required = false) String secondName,
+			@RequestParam(value = "groupName", required = false) String groupName,
+			@RequestParam(value = "page") int page,
+			@RequestParam(value = "size", required = false, defaultValue = "50") Integer size
 	) {
-		return ResponseEntity.ok(studentsService.getAllStudents(firstName, secondName));
+		if (groupName != null) {
+			return ResponseEntity.ok(studentsService.getStudentByGroup(groupName));
+		}
+		return ResponseEntity.ok(studentsService.getAllStudents(firstName, secondName, page, size));
 	}
 
 	//students/5
